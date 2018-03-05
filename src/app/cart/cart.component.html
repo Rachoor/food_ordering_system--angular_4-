@@ -1,0 +1,32 @@
+<div class="container" style="margin-top: 30px;">
+  <div class="row">
+    <h1>Cart</h1>
+    <button class="btn btn-primary" (click)="menu()" style="height: 36px; padding-top: 5px; margin-top: 8px; margin-left: 990px;">Back</button>
+  </div>
+  <hr>
+  <div *ngFor="let cart of cart">
+    <div class="row" style="margin-left: 2px;">
+      <h5>Resturant Name: {{ cart.resturantName }}</h5>
+      <button class="btn btn-danger" (click)="removeResturantFromCart(cart.resturantId)" style="height: 23px; padding-top: 0px; margin-left: 50px;">X</button>
+    </div>
+    <br>
+    <div *ngFor="let dish of cart.dishes">
+      <div class="row" style="margin-left: 2px;">
+        <p>Dish Name: {{ dish.dishName }}</p>
+        <button class="btn btn-primary" (click)="removeDishFromCart(cart.resturantId, dish.dishId)" style="height: 23px; padding-top: 0px; margin-left: 50px;">X</button>
+      </div>
+      <p>Price: {{ dish.dishPrice | currency:"&#8360;"}}</p>
+      <div class="row" style="margin-left: 2px;">
+        <p> Quantity: {{ dish.dishQuantity }}</p>
+        <button class="btn btn-success" style="height: 30px; margin-left: 20px; text-align: center; padding-top: 1px;" (click)="increase(cart.resturantId, dish.dishId)">+</button>
+        <button class="btn btn-danger" style="height: 30px; margin-left: 10px; text-align: center; padding-top: 1px;" (click)="decrease(cart.resturantId, dish.dishId)">-</button>
+      </div>
+    </div>
+    <p>Total Bill: {{ cart.totalPrice | currency:"&#8360;"}}</p>
+    <hr>
+  </div>
+  <hr>
+  <div *ngIf="totalCartBill > 0; bill">
+    <p #bill>Bill: {{ totalCartBill | currency:"&#8360;"}}</p>
+  </div>
+</div>

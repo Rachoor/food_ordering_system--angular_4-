@@ -1,0 +1,35 @@
+<div class="contaier" style="margin-top: 30px; margin-left: 30px;">
+  <h1>Add Menu</h1>
+  <br>
+  <div class="col-md-6">
+    <div class="row">
+      <label>Resturant Name:</label>
+      <select style="margin-left: 20px; width: 25%" [(ngModel)]="resturantInfo" (change)="getMenu(resturantInfo)">
+        <option *ngFor="let resturant of resturants | async" [ngValue]="resturant"  >{{ resturant.name }}</option>
+      </select>
+      <button class="btn btn-primary" style="margin-left: 20px;" (click)="addDish()">+</button>
+      <button class="btn btn-danger" style="margin-left: 20px;" (click)="removeDish()">-</button>
+    </div>
+    <br>
+    <div *ngFor="let dish of dishes; let i = index">
+      <div class="row">
+        <label>Dish Name:</label>
+        <input type="text" style="margin-left: 55px;" [(ngModel)]="dishes[i].dishName">
+      </div>
+      <br>
+      <div class="row">
+        <label>Price:</label>
+        <input type="number" style="margin-left: 97px;" [(ngModel)]="dishes[i].dishPrice">
+      </div>
+      <br>
+      <div class="row">
+        <label>Image:</label>
+        <input type="url" style="margin-left: 88px;" [(ngModel)]="dishes[i].dishImage">
+      </div>
+      <br>
+    </div>
+    <br>
+  </div>
+  <button class="btn btn-success" style="margin-left: 45px;" (click)="addMenu(resturantInfo.id ,resturantInfo.name, dishes)">Submit</button>
+  <button class="btn btn-secondary" (click)="resturantsList()" style="margin-left: 30px;">Resturants</button>
+</div>

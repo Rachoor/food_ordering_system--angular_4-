@@ -1,0 +1,32 @@
+<div class="contaier" style="margin-top: 30px; margin-left: 30px;">
+  <h1>Add Resturant</h1>
+  <br>
+  <div class="col-md-6">
+    <div class="row">
+      <label>Resturant Name:</label>
+      <input type="text" style="margin-left: 20px;" [(ngModel)]="name">
+    </div>
+    <br>
+    <div class="row">
+      <label>Description:</label>
+      <input type="text" style="margin-left: 53px;" [(ngModel)]="detail">
+    </div>
+    <br>
+    <div class="row">
+      <label>Cusine:</label>
+      <div class="col-md-8">
+        <input type="text" style="margin-left: 71px;" *ngFor="let cusine of cusines; let i = index" [(ngModel)]="cusines[i]">
+        <button class="btn btn-primary" style="margin-left: 20px;" (click)="addCusine()">+</button>
+        <button class="btn btn-danger" style="margin-left: 10px;" (click)="removeCusine()">-</button>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <label>Image:</label>
+      <input type="url" style="margin-left: 88px;" [(ngModel)]="picture">
+    </div>
+    <br>
+  </div>
+  <button class="btn btn-success" style="margin-left: 45px;" (click)="addResturant(name, detail, cusines, picture)">Submit</button>
+  <button class="btn btn-secondary" (click)="resturantsList()" style="margin-left: 30px;">Resturants</button>
+</div>
